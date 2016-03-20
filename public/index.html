@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2196F3">
-    <title>Material UI One Page Theme</title>
+    <title>Midterm</title>
     <!-- CSS  -->
     <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
     <link href="min/custom-min.css" type="text/css" rel="stylesheet">
@@ -28,10 +28,10 @@
                     <div class="nav-wrapper">
                         <a href="#/" id="logo-container" class="brand-logo">ร้านหนังสือ บ้านนายจิน</a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="#cart">ตะกระสิ้นค้า ({{cart}})</a></li>
+                            <li><a href="#cart">ตะกร้าสินค้าของคุณ </a></li>
                         </ul>
                         <ul id="nav-mobile" class="side-nav">
-                            <li><a href="#cart">ตะกระสิ้นค้า ({{cart}})</a></li>
+                            <li><a href="#cart">ตะกร้าสินค้าของคุณ </a></li>
                         </ul>
                         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                     </div>
@@ -54,12 +54,19 @@
                                 <h6>{{sour.name}}</h6>
                             <i class="mdi-navigation-more-vert right"></i>
                             </span>
-                                    <p> {{sour.price}} บาท
+                                    <p> {{sour.price}} บาท x {{sour.quantity}}
                                     </p>
                                     <p align="center">
-                                        <button class="btn waves-effect waves-light" ng-click="testclick($index)" name="action">
-                                            ซื้อทันที
-                                        </button>
+                                        <button class="btn btn-default" 
+                                        onclick="Materialize.toast('อัพเดทแล้ว', 4000)" 
+                                        ng-click="clickAdd(sour)">Δ</button>
+                                        <button class="btn btn-default" 
+                                        onclick="Materialize.toast('อัพเดทแล้ว', 4000)"
+                                        ng-click="clickRemove(sour)">∇</button>
+                                            <button class="btn waves-effect waves-light" 
+                                            ng-click="testclick(sour,sour.id)" name="action">
+                                                ซื้อทันที
+                                            </button>
                                     </p>
                                 </div>
                                 <div class="card-reveal">
@@ -79,7 +86,8 @@
                             <blockquote>
                                 รายการสินค้า
                             </blockquote>
-                            <div ng-repeat="data in buy ">
+                            <div ng-repeat="data in buy">
+                                {{data.name}} จำนวน {{data.quantity}} รวม {{data.quantity*data.price}}
                             </div>
                         </div>
                         <div ng-hide="sum">
