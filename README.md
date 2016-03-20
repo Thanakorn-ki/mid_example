@@ -1,4 +1,4 @@
-# how to intall 
+# how to install 
 $: npm init
 
 $: npm install express --save
