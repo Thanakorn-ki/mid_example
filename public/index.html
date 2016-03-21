@@ -84,7 +84,10 @@
                             <div ng-repeat="data in buy">
                                 {{data.name}} จำนวน {{data.quantity}} รวม {{data.quantity*data.price}}
                             </div>
-                            <button class="btn waves-effect waves-light" ng-click="confirm()" name="action">
+                            <button 
+                            class="waves-effect waves-light btn modal-trigger" 
+                            href="#modal1" 
+                            ng-click="confirm()" name="action">
                                 ชำระเงิน
                             </button>
                         </div>
@@ -93,11 +96,22 @@
                                 ยังไม่มีรายการสินค้า
                             </blockquote>
                         </div>
-                        <div ng-repeat="show in sumall">
-                            <p> รวม {{show.product}} เล่ม </p>
-                            <p> ราคารวม {{show.total}} บาท </p>
-                            <p> ส่วนลด {{show.sell}} บาท </p>
-                            <p> รวมสุทธิ {{show.sum}} บาท </p>
+                        <!-- Modal Trigger -->
+                        
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal bottom-sheet">
+                            <div class="modal-content">
+                                <h4>ยอดชำระ</h4>
+                                <div ng-repeat="show in sumall">
+                                    <p> รวม {{show.product}} เล่ม </p>
+                                    <p> ราคารวม {{show.total}} บาท </p>
+                                    <p> ส่วนลด {{show.sell}} บาท </p>
+                                    <p> รวมสุทธิ {{show.sum}} บาท </p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">ปิด</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -184,3 +198,22 @@
 </body>
 
 </html>
+<script type="text/javascript">
+$(document).ready(function() {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        out_duration: 200, // Transition out duration
+        ready: function() {
+            // alert('Ready');
+        }, // Callback for Modal open
+        complete: function() {
+                // alert('Closed');
+            } // Callback for Modal close
+    });
+
+    $('#modal1').closeModal();
+});
+</script>
