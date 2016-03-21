@@ -57,16 +57,11 @@
                                     <p> {{sour.price}} บาท x {{sour.quantity}}
                                     </p>
                                     <p align="center">
-                                        <button class="btn btn-default" 
-                                        onclick="Materialize.toast('อัพเดทแล้ว', 4000)" 
-                                        ng-click="clickAdd(sour)">Δ</button>
-                                        <button class="btn btn-default" 
-                                        onclick="Materialize.toast('อัพเดทแล้ว', 4000)"
-                                        ng-click="clickRemove(sour)">∇</button>
-                                            <button class="btn waves-effect waves-light" 
-                                            ng-click="testclick(sour,sour.id)" name="action">
-                                                ซื้อทันที
-                                            </button>
+                                        <button class="btn btn-default" onclick="Materialize.toast('อัพเดทแล้ว', 4000)" ng-click="clickAdd(sour)">Δ</button>
+                                        <button class="btn btn-default" onclick="Materialize.toast('อัพเดทแล้ว', 4000)" ng-click="clickRemove(sour)">∇</button>
+                                        <button class="btn waves-effect waves-light" ng-click="testclick(sour,sour.id)" name="action">
+                                            หยิบ
+                                        </button>
                                     </p>
                                 </div>
                                 <div class="card-reveal">
@@ -89,11 +84,20 @@
                             <div ng-repeat="data in buy">
                                 {{data.name}} จำนวน {{data.quantity}} รวม {{data.quantity*data.price}}
                             </div>
+                            <button class="btn waves-effect waves-light" ng-click="confirm()" name="action">
+                                ชำระเงิน
+                            </button>
                         </div>
                         <div ng-hide="sum">
                             <blockquote>
                                 ยังไม่มีรายการสินค้า
                             </blockquote>
+                        </div>
+                        <div ng-repeat="show in sumall">
+                            <p> รวม {{show.product}} เล่ม </p>
+                            <p> ราคารวม {{show.total}} บาท </p>
+                            <p> ส่วนลด {{show.sell}} บาท </p>
+                            <p> รวมสุทธิ {{show.sum}} บาท </p>
                         </div>
                     </div>
                 </div>

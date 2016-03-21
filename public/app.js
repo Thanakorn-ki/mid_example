@@ -17,52 +17,19 @@ angular.module('midone', [])
         var testcheck = true
         var count = []
         $scope.sum = false
+        var btn_confirm = []
         $scope.testclick = function(obj, ids) {
             if (obj.quantity > 0) {
+
                 $scope.buy.push(obj)
+                console.log($scope.buy);
+                btn_confirm.push(obj)
                 $scope.sum = true
                 count.push(ids) // จำนวนหนังสือ
-                for (var i = ee; i < $scope.buy.length; i++) {
-                    num += $scope.buy[i].quantity
-                    ee++
-                }
-                // รวมทุกเล่ม num 
-                var price = 100
-                var sell = 0
-                var s = num * price // ราคารวม 
-                var sumproduct = count.length // จำนวน หนังสือ
-                console.log(sumproduct);
-                var ssss = Math.ceil(num / sumproduct)
 
-                if (sumproduct == 2) {
-                    total = s - ((s * 10) / 100)
-                    sell = ((s * 10) / 100)
-                } else if (sumproduct == 3) {
-                    total = s - ((s * 20) / 100)
-                    sell = ((s * 20) / 100)
-                } else if (sumproduct == 4) {
-                    total = s - ((s * 30) / 100)
-                    sell = ((s * 30) / 100)
-                } else if (sumproduct == 5) {
-                    total = s - ((s * 40) / 100)
-                    sell = ((s * 40) / 100)
-                } else if (sumproduct == 6) {
-                    total = s - ((s * 50) / 100)
-                    sell = ((s * 50) / 100)
-                } else if (sumproduct == 7) {
-                    total = s - ((s * 60) / 100)
-                    sell = ((s * 60) / 100)
-                } else {
-                    total += price
-                }
-
-
-                console.log('product : ' + num);
-                console.log('sum : ' + s);
-                console.log('sell : ' + sell);
-                console.log('Total : ' + total);
 
             }
+
         }
         $scope.clickAdd = function(obj) {
             obj.quantity += 1
@@ -74,6 +41,84 @@ angular.module('midone', [])
             } else {
                 return false
             }
+        }
+        $scope.confirm = function() {
+
+            for (var i = ee; i < btn_confirm.length; i++) {
+                num += btn_confirm[i].quantity
+                ee++
+            }
+            console.log(num);
+            var c = 0
+            var s = 0
+            var ss = 0
+
+            var sell = 0
+            var exit = 0
+
+            do {
+
+                for (var i = 0; i < btn_confirm.length; i++) {
+                    if (btn_confirm[i].quantity != 0) {
+                        c += 1
+                    }
+                    if (btn_confirm[i].quantity == 0) {
+                        c = 0
+                    }
+                }
+                if (c == 1) {
+                    s += c * 100
+                    c = 0
+
+                    console.log('1')
+                } else if (c == 2) {
+                    s = ((c * 100) - ((c * 100) * 0.1))
+                    sell += ((c * 100) * 0.1)
+                    console.log('2')
+                } else if (c == 3) {
+                    s = ((c * 100) - ((c * 100) * 0.2))
+                    sell += ((c * 100) * 0.2)
+                    console.log('3')
+                } else if (c == 4) {
+                    s = ((c * 100) - ((c * 100) * 0.3))
+                    sell += ((c * 100) * 0.3)
+                    console.log('4')
+                } else if (c == 5) {
+                    s = ((c * 100) - ((c * 100) * 0.4))
+                    sell += ((c * 100) * 0.4)
+                    console.log('5')
+                } else if (c == 6) {
+                    s = ((c * 100) - ((c * 100) * 0.5))
+                    sell += ((c * 100) * 0.5)
+                    console.log('6')
+                } else if (c == 7) {
+                    s = ((c * 100) - ((c * 100) * 0.6))
+                    sell += ((c * 100) * 0.6)
+                    console.log('7')
+                } else if (c == 0) {
+
+                    exit = 1
+                    console.log('exit')
+                }
+
+                for (var i = 0; i < btn_confirm.length; i++) {
+                    if (btn_confirm[i].quantity > 0) {
+                        btn_confirm[i].quantity -= 1
+                        c = 0
+                    }
+
+
+                }
+
+
+
+            } while (exit != 1);
+            // console.log('product : ' + num);
+            // console.log('Total : ' + num * 100);
+            // console.log('sell : ' + sell);
+            // console.log('To ' + ((num * 100)-sell));
+            // console.log(btn_confirm);
+            $scope.sumall = [{ 'product': num, 'total': (num * 100), 'sell': sell, 'sum': ((num * 100) - sell) }]
         }
 
     })
