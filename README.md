@@ -1,8 +1,15 @@
 # how to install 
-$: npm init
+ ```
+ $ npm install
+ ```
 
-$: npm start
+ ## Start Server
+```
+$ npm Start
+```
 
-localhost:8081
+## Run Test
+```
+$ npm test
 
 
