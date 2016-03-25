@@ -1,15 +1,13 @@
-# how to install 
+# how to install
  ```
  $ npm install
  ```
 
  ## Start Server
 ```
-$ npm Start
+$ npm start
 ```
 
 ## Run Test
 ```
 $ npm test
-
-
