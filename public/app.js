@@ -56,13 +56,7 @@ angular.module('midone', [])
     $scope.cart = function (id, obj) {
       if ($scope.checkadd(id)) {
         var index_cart = $scope.checkindex(id)
-        $scope.cartdata.splice(index_cart, 1, {
-          id: obj.id,
-          name: obj.name,
-          pic: obj.pic,
-          price: obj.price,
-          quantity: obj.quantity += 1
-        })
+        $scope.cartdata[index_cart].quantity++
         $scope.num++
       } else {
         $scope.cartdata.push({
@@ -73,7 +67,6 @@ angular.module('midone', [])
           quantity: obj.quantity
         })
         $scope.num++
-        $scope.booknum++
         $scope.show = true
       }
 
@@ -103,14 +96,16 @@ angular.module('midone', [])
         temp += quantity[j]
       }
       $scope.num = temp
-    // $scope.callsell(quantity)
+      $scope.callsell(quantity)
+      return temp
     }
 
-    $scope.delete = function (index, obj) {
-      if (obj.quantity > 0) {
-        obj.quantity -= 1
-      } else if (obj.quantity === -1) {
-        $scope.cartdata[index].splice(index, 1)
+    $scope.delete = function (index) {
+      $scope.cartdata.splice(index, 1)
+      var check = $scope.recal()
+      console.log(check)
+      if (check === 0) {
+        $scope.show = false
       }
     }
 
