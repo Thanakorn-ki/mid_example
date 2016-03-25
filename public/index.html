@@ -28,10 +28,10 @@
                     <div class="nav-wrapper">
                         <a href="#logo" id="logo-container" class="brand-logo">ร้านหนังสือ บ้านนายจิน</a>
                         <ul class="right hide-on-med-and-down" id="dropdown1">
-                            <li><a href="#cart">ตะกร้าสินค้าของคุณ <span ng-show="sum" class="new badge">({{shownum}})</span></a></li>
+                            <li><a class="modal-trigger" href="#ss">ตะกร้าสินค้าของคุณ <span ng-show="show" class="new badge">({{booknum}})</span></a></li>
                         </ul>
                         <ul id="nav-mobile" class="side-nav">
-                            <li><a href="#cart">ตะกร้าสินค้าของคุณ {{shownum}}</a></li>
+                            <li><a class="modal-trigger" href="#ss">ตะกร้าสินค้าของคุณ <span ng-show="show" >({{booknum}})</span></a></li>
                         </ul>
                         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                     </div>
@@ -43,7 +43,7 @@
                 <h2 class="header text_b">Books </h2>
                 <div class="row">
                     <div ng-repeat="sour in data">
-                        <div class="col s12 m7 l4">
+                        <div class="col s12 m10 l4">
                             <div class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
                                     <img class="activator" ng-src="{{sour.pic}}">
@@ -52,34 +52,14 @@
                                     <span class="card-title activator grey-text text-darken-3">
                                 <h6>{{sour.name}}</h6>
                                     </span>
-                                    <p> {{sour.price}} บาท x {{sour.quantity}}
+                                    <p> {{sour.price}} บาท
                                     </p>
                                     <p align="center">
                                         <div class="row">
-                                            <div ng-show="sour.check">
-                                                <div class="col s3">
-                                                    <button class="btn btn-default" ng-click="clickAdd(sour)">Δ</button>
-                                                </div>
-                                                <div class="col s3">
-                                                    <button class="btn btn-default" ng-click="clickRemove(sour)">∇</button>
-                                                </div>
-                                            </div>
-                                            <div ng-hide="sour.check">
-                                                <div class="col s3">
-                                                    <button class="btn btn-default" onclick="Materialize.toast('อัพเดทแล้ว', 4000)" ng-click="clickAdd(sour)">Δ</button>
-                                                </div>
-                                                <div class="col s3">
-                                                    <button class="btn btn-default" onclick="Materialize.toast('อัพเดทแล้ว', 4000)" ng-click="clickRemove(sour)">∇</button>
-                                                </div>
-                                            </div>
-                                            <!-- /////////////////////////////////////////////////// -->
                                             <div class="col s6">
-                                                <div ng-show="sour.check">
-                                                    <button class="btn waves-effect waves-light" 
-                                                    ng-if="sour.check" onclick="Materialize.toast('เพิ่มสิ้นเรียบร้อย', 4000)" ng-click="testclick(sour,$index)" name="action">
-                                                        เพิ่มสินค้า
-                                                    </button>
-                                                </div>
+                                                <button class="btn waves-effect waves-light" onclick="Materialize.toast('เพิ่มสินค้าเรียบร้อย', 4000)" ng-click="cart(sour.id,sour)" name="action">
+                                                    หยิบเข้าตะกร้า
+                                                </button>
                                             </div>
                                         </div>
                                     </p>
@@ -89,36 +69,62 @@
                     </div>
                 </div>
                 <div class="section scrollspy" id="cart">
-                    <h2 class="header text_b">ตะกร้าสินค้าของคุณ </h2>
-                    <div class="row">
-                        <div ng-show="sum">
-                            <blockquote>
-                                รายการสินค้า
-                            </blockquote>
-                            <div ng-repeat="data in buy">
-                                {{data.name}} จำนวน {{data.quantity}} รวม {{data.quantity*data.price}}
-                            </div>
-                            <br><br>
-                                <button class="waves-effect waves-light btn modal-trigger" href="#modal1" ng-click="confirm()" name="action">
-                                    ชำระเงิน
-                                </button>
-                            
-                        </div>
-                        <div ng-hide="sum">
-                            <blockquote>
-                                ยังไม่มีรายการสินค้า
-                            </blockquote>
-                        </div>
-                        <!-- Modal Trigger -->
-                        <!-- Modal Structure -->
-                        <div id="modal1" class="modal bottom-sheet">
-                            <div class="modal-content">
-                                <h4>ยอดชำระ</h4>
-                                <div ng-repeat="show in sumall">
-                                    <p> รวม {{show.product}} เล่ม </p>
-                                    <p> ราคารวม {{show.total}} บาท </p>
-                                    <p> ส่วนลด {{show.sell}} บาท </p>
-                                    <p> รวมสุทธิ {{show.sum}} บาท </p>
+                    <!-- Modal Structure -->
+                    <div id="ss" class="modal">
+                        <div class="modal-content">
+                            <div class="container">
+                                <h4>รายการสินค้า</h4>
+                                <div class="row">
+                                    <div ng-show="show">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="id">เรื่อง</th>
+                                                    <th data-field="name">จำนวน</th>
+                                                    <th data-field="price">ราคา</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="data in cartdata">
+                                                    <td>{{data.name}}</td>
+                                                    <td>{{data.quantity}}</td>
+                                                    <td>{{data.quantity*data.price}}</td>
+                                                    <td>
+                                                        <button class="waves-effect waves-light btn"  ng-click="delete($index,data)">ลบสินค้า</button>
+                                                    </td>
+                                                </tr>
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tr>
+                                                <td></td><td></td><td></td>
+                                                   <td>รวม {{num}} เล่ม</td>
+                                                </tr>
+                                                 <tr>
+                                                <td></td><td></td><td></td>
+                                                   <td>รวม {{num*100}} เล่ม</td>
+                                                </tr>
+                                                 <tr>
+                                                <td></td><td></td><td></td>
+                                                   <td>ลด {{sell}} บาท</td>
+                                                </tr>
+                                                 <tr>
+                                                <td></td><td></td><td></td>
+                                                   <td>รวมสุทธิ {{(num*100)-sell}} บาท</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div ng-hide="show">
+                                        <blockquote>
+                                            ยังไม่มีรายการสินค้า
+                                        </blockquote>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">

@@ -1,33 +1,33 @@
-angular.module('midone', [])
-    .controller('midonecontron', function($scope) {
-        $scope.cart = 0
+angular.module('midones', [])
+    .controller('midonecontrons', function($scope) {
         $scope.data = [
-            { id: 1, name: 'แฮร์รี่ พอตเตอร์ กับศิลาอาถรรพ์', pic: 'images/1.jpg', price: 100, quantity: 1 },
-            { id: 2, name: 'แฮร์รี่ พอตเตอร์ กับห้องแห่งความลับ', pic: 'images/2.jpg', price: 100, quantity: 1 },
-            { id: 3, name: 'แฮร์รี่ พอตเตอร์ กับนักโทษแห่งอัซคาบัน', pic: 'images/3.jpg', price: 100, quantity: 1 },
-            { id: 4, name: 'แฮร์รี่ พอตเตอร์ กับถ้วยอัคนี', pic: 'images/4.jpg', price: 100, quantity: 1 },
-            { id: 5, name: 'แฮร์รี่ พอตเตอร์ กับภาคีนกฟีนิกซ์', pic: 'images/5.jpg', price: 100, quantity: 1 },
-            { id: 6, name: 'แฮร์รี่ พอตเตอร์ กับเจ้าชายเลือดผสม', pic: 'images/6.jpg', price: 100, quantity: 1 },
-            { id: 7, name: 'แฮร์รี่ พอตเตอร์ กับเครื่องรางยมทูต', pic: 'images/7.jpg', price: 100, quantity: 1 }
+            { id: 1, name: 'แฮร์รี่ พอตเตอร์ กับศิลาอาถรรพ์', pic: 'images/1.jpg', price: 100, quantity: 0, check: true },
+            { id: 2, name: 'แฮร์รี่ พอตเตอร์ กับห้องแห่งความลับ', pic: 'images/2.jpg', price: 100, quantity: 0, check: true },
+            { id: 3, name: 'แฮร์รี่ พอตเตอร์ กับนักโทษแห่งอัซคาบัน', pic: 'images/3.jpg', price: 100, quantity: 0, check: true },
+            { id: 4, name: 'แฮร์รี่ พอตเตอร์ กับถ้วยอัคนี', pic: 'images/4.jpg', price: 100, quantity: 0, check: true },
+            { id: 5, name: 'แฮร์รี่ พอตเตอร์ กับภาคีนกฟีนิกซ์', pic: 'images/5.jpg', price: 100, quantity: 0, check: true },
+            { id: 6, name: 'แฮร์รี่ พอตเตอร์ กับเจ้าชายเลือดผสม', pic: 'images/6.jpg', price: 100, quantity: 0, check: true },
+            { id: 7, name: 'แฮร์รี่ พอตเตอร์ กับเครื่องรางยมทูต', pic: 'images/7.jpg', price: 100, quantity: 0, check: true }
         ]
         $scope.cartdata = []
         $scope.num = 0
-        $scope.show = false
         $scope.booknum = 0
         $scope.sell = 0
+        $scope.show = true
         var tmp = []
-        $scope.cart = function(id, obj) {
+        $scope.cart = function(id, index) {
 
             if ($scope.checkadd(id)) {
                 var index_cart = $scope.checkindex(id)
-                $scope.cartdata.splice(index_cart, 1, { id: obj.id, name: obj.name, pic: obj.pic, price: obj.price, quantity: obj.quantity += 1 })
+                $scope.cartdata.splice(index_cart, 1, { id: id, quantity: $scope.cartdata[index_cart].quantity += 1 })
                 $scope.num++
 
             } else {
-                $scope.cartdata.push({ id: obj.id, name: obj.name, pic: obj.pic, price: obj.price, quantity: obj.quantity })
+                $scope.cartdata.push({ id: id, quantity: 1 })
                 $scope.num++
                 $scope.booknum++
-                 $scope.show = true
+                $scope.show = false
+
 
             }
 
@@ -45,18 +45,10 @@ angular.module('midone', [])
                     quantity.push($scope.cartdata[i].quantity)
                 }
             }
-            
+            console.log(quantity);
             $scope.callsell(quantity)
         }
-        $scope.delete = function(index,obj) {
-            if (obj.quantity > 0) {
-                obj.quantity-=1
-                quantity[index]-=1
-            }else if(obj.quantity === -1){
-              $scope.cartdata.splice(index, 1 )
-            }
 
-        }
         $scope.checkadd = function(id) {
             for (var ch_data = 0; ch_data < $scope.cartdata.length; ch_data++) {
                 if ($scope.cartdata[ch_data].id === id) {
@@ -75,11 +67,11 @@ angular.module('midone', [])
         }
 
         $scope.callsell = function(amount) {
-
-            $scope.sell = 0
+           
+           $scope.sell = 0
             var countlist = 0 // เช็ครอบเข้า เงื่อนไขลดราคา
             var exit = 0
-
+           
             do {
                 // /////// for เช็ค จำนวนเล่มหนังสือ
                 for (var i = 0; i < amount.length; i++) {
