@@ -2,50 +2,14 @@
 angular.module('midone', [])
   .controller('midonecontron', function ($scope) {
     $scope.cart = 0
-    $scope.data = [{
-      id: 1,
-      name: 'แฮร์รี่ พอตเตอร์ กับศิลาอาถรรพ์',
-      pic: 'images/1.jpg',
-      price: 100,
-      quantity: 1
-    }, {
-      id: 2,
-      name: 'แฮร์รี่ พอตเตอร์ กับห้องแห่งความลับ',
-      pic: 'images/2.jpg',
-      price: 100,
-      quantity: 1
-    }, {
-      id: 3,
-      name: 'แฮร์รี่ พอตเตอร์ กับนักโทษแห่งอัซคาบัน',
-      pic: 'images/3.jpg',
-      price: 100,
-      quantity: 1
-    }, {
-      id: 4,
-      name: 'แฮร์รี่ พอตเตอร์ กับถ้วยอัคนี',
-      pic: 'images/4.jpg',
-      price: 100,
-      quantity: 1
-    }, {
-      id: 5,
-      name: 'แฮร์รี่ พอตเตอร์ กับภาคีนกฟีนิกซ์',
-      pic: 'images/5.jpg',
-      price: 100,
-      quantity: 1
-    }, {
-      id: 6,
-      name: 'แฮร์รี่ พอตเตอร์ กับเจ้าชายเลือดผสม',
-      pic: 'images/6.jpg',
-      price: 100,
-      quantity: 1
-    }, {
-      id: 7,
-      name: 'แฮร์รี่ พอตเตอร์ กับเครื่องรางยมทูต',
-      pic: 'images/7.jpg',
-      price: 100,
-      quantity: 1
-    }]
-
+    $scope.data = [
+      { id: 1, name: 'แฮร์รี่ พอตเตอร์ กับศิลาอาถรรพ์', pic: 'images/1.jpg', price: 100, quantity: 1 },
+      { id: 2, name: 'แฮร์รี่ พอตเตอร์ กับห้องแห่งความลับ', pic: 'images/2.jpg', price: 100, quantity: 1 },
+      { id: 3, name: 'แฮร์รี่ พอตเตอร์ กับนักโทษแห่งอัซคาบัน', pic: 'images/3.jpg', price: 100, quantity: 1 },
+      { id: 4, name: 'แฮร์รี่ พอตเตอร์ กับถ้วยอัคนี', pic: 'images/4.jpg', price: 100, quantity: 1 },
+      { id: 5, name: 'แฮร์รี่ พอตเตอร์ กับภาคีนกฟีนิกซ์', pic: 'images/5.jpg', price: 100, quantity: 1 },
+      { id: 6, name: 'แฮร์รี่ พอตเตอร์ กับเจ้าชายเลือดผสม', pic: 'images/6.jpg', price: 100, quantity: 1 },
+      { id: 7, name: 'แฮร์รี่ พอตเตอร์ กับเครื่องรางยมทูต', pic: 'images/7.jpg', price: 100, quantity: 1 }]
     $scope.cartdata = []
     $scope.num = 0
     $scope.show = false

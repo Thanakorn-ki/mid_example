@@ -1,3 +1,4 @@
+/* global angular */
 angular.module('midones', [])
   .controller('midonecontrons', function ($scope) {
     $scope.data = [
