@@ -14,4 +14,4 @@ $ npm test
 
 ## Website
 ```
-https://example-test.herokuapp.com/
+$ https://example-test.herokuapp.com/
