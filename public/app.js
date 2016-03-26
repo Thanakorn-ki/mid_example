@@ -101,7 +101,6 @@ angular.module('midone', [])
           }
           if (amount[i] === 0) {
             countlist += 0
-            break
           }
         }
         if (countlist === 1) {

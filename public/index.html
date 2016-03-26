@@ -113,7 +113,7 @@
                             <td></td>
                             <td></td>
                             <td>รวม
-                              {{num}}
+                            <a class="count">{{num}}</a>
                                บาท</td>
                           </tr>
                           <tr>
@@ -128,16 +128,16 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td class="sell">ลด
-                              {{sell}}
+                            <td>ลด
+                            <a class="discount">{{sell}}</a>
                               บาท</td>
                           </tr>
                           <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td class="total">รวมสุทธิ
-                              {{(num*100)-sell}}
+                            <td>รวมสุทธิ
+                            <a class="sumall">{{(num*100)-sell}}</a>
                               บาท</td>
                           </tr>
                         </tbody>
