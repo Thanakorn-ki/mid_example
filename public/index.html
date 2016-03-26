@@ -5,6 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/jquery-2.1.1.min.js"> </script>
+    <script src="js/materialize.min.js"></script>
+
     <meta name="theme-color" content="#2196F3">
     <title>Midterm</title>
     <!-- CSS  -->
@@ -29,7 +32,7 @@
               <a href="#logo" id="logo-container" class="brand-logo">ร้านหนังสือ บ้านนายจิน</a>
               <ul class="right hide-on-med-and-down" id="dropdown1">
                 <li>
-                  <a class="modal-trigger" href="#ss">ตะกร้าสินค้าของคุณ
+                  <a class="modal-trigger submit" href="#ss">ตะกร้าสินค้าของคุณ
                     <span ng-show="show" class="new badge">({{num}})</span>
                   </a>
                 </li>
@@ -61,7 +64,7 @@
                       บาท
                     </p>
                     <p>
-                      <button class="btn waves-effect waves-light" onclick="Materialize.toast('เพิ่มสินค้าเรียบร้อย', 4000)" ng-click="cart(sour.id,sour)" name="action">
+                      <button class="btn waves-effect waves-light id{{$index}} " onclick="Materialize.toast('เพิ่มสินค้าเรียบร้อย',4000)" ng-click="cart(sour.id,sour)" name="action">
                         หยิบเข้าตะกร้า
                       </button>
                     </p>
@@ -118,14 +121,14 @@
                             <td></td>
                             <td></td>
                             <td>รวม
-                              {{num*100}}
+                            <a class="sum">{{num*100}}</a>
                               เล่ม</td>
                           </tr>
                           <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>ลด
+                            <td class="sell">ลด
                               {{sell}}
                               บาท</td>
                           </tr>
@@ -133,7 +136,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>รวมสุทธิ
+                            <td class="total">รวมสุทธิ
                               {{(num*100)-sell}}
                               บาท</td>
                           </tr>
@@ -204,27 +207,14 @@
       </footer>
     </div>
     <!--  Scripts-->
-    <script src="min/plugin-min.js"></script>
-    <script src="min/custom-min.js"></script>
+    <!-- <script src="js/materialize.min.js"></script> -->
+    <!-- <script src="min/custom-min.js"></script> -->
   </body>
 
 </html>
 <script type="text/javascript">
-  $(document).ready(function() {
+  $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
-      in_duration: 300, // Transition in duration
-      out_duration: 200, // Transition out duration
-      ready: function() {
-        // alert('Ready');
-      }, // Callback for Modal open
-      complete: function() {
-        // alert('Closed');
-      } // Callback for Modal close
-    });
-    $(".dropdown-button").dropdown();
-
+    $('.modal-trigger').leanModal();
   });
 </script>
