@@ -1,7 +1,7 @@
 <h1 align="center">บ้านนายจินบุ๊ค</h1>
 <p align="center">
 <a href="https://hpjin.herokuapp.com/">
-<img src="/public/img/apple-icon-180x180.png"/></a></p>
+<img src="/public/favicon.ico"/></a></p>
 <p align="center">
 <a href="http://standardjs.com/">
 <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"/></a></p>
