@@ -100,45 +100,21 @@
                             <td>{{data.quantity*data.price}}</td>
                             <td><a href="#"><i class="material-icons" ng-click="delete($index)">delete_forever</i></a></td>
                           </tr>
-                          <thead>
-                            <tr>
-                              <th></th>
-                              <th></th>
-                              <th></th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>รวม
-                              <a class="count">{{num}}</a>
-                              เล่ม</td>
+                          <thead><tr><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
+                          <tr><td></td><td></td><td></td>
+                            <td>รวม <a class="count">{{num}}</a> เล่ม</td>
                           </tr>
                           <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>รวม
-                              <a class="sum">{{num*100 | currency:'฿' }}</a>
-                              บาท</td>
+                            <td></td><td></td><td></td>
+                            <td colspan="3">ราคารวม <a class="sum">{{num*100 | currency:'฿' }}</a> บาท</td>
                           </tr>
                           <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>ส่วนลด
-                              <a class="discount">{{sell | currency:'฿'}}</a>
-                              บาท</td>
+                            <td></td><td></td><td></td>
+                            <td colspan="3">ส่วนลด <a class="discount">{{sell | currency:'฿'}}</a> บาท</td>
                           </tr>
                           <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>รวมสุทธิ
-                              <a class="sumall">{{(num*100)-sell  | currency:'฿'}}</a>
-                              บาท</td>
+                            <td></td><td></td><td></td>
+                            <td colspan="3">รวมสุทธิ <a class="sumall">{{(num*100)-sell  | currency:'฿'}}</a> บาท</td>
                           </tr>
                         </tbody>
                       </table>
