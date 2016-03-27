@@ -4,7 +4,7 @@ var Nightmare = require('nightmare')
 var expect = require('chai').expect
 
 describe('Run test ', function () {
-  it('test 1 check sum book equal 300', function * () {
+  it('test 1 check sum book equal ฿300.00', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -16,10 +16,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.sum').innerHTML
       })
-    expect(value).to.equal('300')
+    expect(value).to.equal('฿300.00')
   })
 
-  it('test 2 Test check discount equal 80 buy harry 1 (3) , harry 2 (2) and harry 3 (1)', function * () {
+  it('test 2 Test check discount equal ฿80.00 buy harry 1 (3) , harry 2 (2) and harry 3 (1)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -34,10 +34,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.discount').innerHTML
       })
-    expect(value).to.equal('80')
+    expect(value).to.equal('฿80.00')
   })
 
-  it('test 3 Test check discount equal 20 buy harry 1 (2) and harry 2 (1) ', function * () {
+  it('test 3 Test check discount equal ฿20.00 buy harry 1 (2) and harry 2 (1) ', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -49,10 +49,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.discount').innerHTML
       })
-    expect(value).to.equal('20')
+    expect(value).to.equal('฿20.00')
   })
 
-  it('test 4 Test check discount equal 80 buy harry 1 (3) , harry 2 (2) and harry 3 (1)', function * () {
+  it('test 4 Test check total equal ฿520.00 buy harry 1 (3) , harry 2 (2) and harry 3 (1)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -65,12 +65,12 @@ describe('Run test ', function () {
       .click('.id2')
       .click('.submit')
       .evaluate(function () {
-        return document.querySelector('.discount').innerHTML
+        return document.querySelector('.sumall').innerHTML
       })
-    expect(value).to.equal('80')
+    expect(value).to.equal('฿520.00')
   })
 
-  it('test 5 Test check discount equal 60 buy harry 1 (3)  and harry 3 (3)', function * () {
+  it('test 5 Test check discount equal ฿60.00 buy harry 1 (3)  and harry 3 (3)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -85,10 +85,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.discount').innerHTML
       })
-    expect(value).to.equal('60')
+    expect(value).to.equal('฿60.00')
   })
 
-  it('test 6 Test check discount equal 60 buy harry 1 (1) , harry 2 (1) and harry 3 (1)', function * () {
+  it('test 6 Test check discount equal ฿60.00 buy harry 1 (1) , harry 2 (1) and harry 3 (1)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -100,10 +100,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.discount').innerHTML
       })
-    expect(value).to.equal('60')
+    expect(value).to.equal('฿60.00')
   })
 
-  it('test 7 Test check discount equal 0 buy harry 1 (3)', function * () {
+  it('test 7 Test check discount equal ฿0.00 buy harry 1 (3)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -115,10 +115,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.discount').innerHTML
       })
-    expect(value).to.equal('0')
+    expect(value).to.equal('฿0.00')
   })
 
-  it('test 8 Test check Total  equal 240 buy harry 1 (1) , harry 2 (1) and harry 3 (1)', function * () {
+  it('test 8 Test check Total  equal ฿240.00 buy harry 1 (1) , harry 2 (1) and harry 3 (1)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -130,10 +130,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.sumall').innerHTML
       })
-    expect(value).to.equal('240')
+    expect(value).to.equal('฿240.00')
   })
 
-  it('test 9 Test check Total  equal 480 buy harry 1 (2) , harry 2 (2) and harry 3 (2)', function * () {
+  it('test 9 Test check Total  equal ฿480.00 buy harry 1 (2) , harry 2 (2) and harry 3 (2)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -148,10 +148,10 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.sumall').innerHTML
       })
-    expect(value).to.equal('480')
+    expect(value).to.equal('฿480.00')
   })
 
-  it('test 10 Test check Total equal 600 buy harry 1 (3) , harry 2 (1) and harry 3 (3)', function * () {
+  it('test 10 Test check Total equal ฿600.00 buy harry 1 (3) , harry 2 (1) and harry 3 (3)', function * () {
     this.timeout(30000)
     var nightmare = Nightmare()
     var value = yield nightmare
@@ -167,6 +167,6 @@ describe('Run test ', function () {
       .evaluate(function () {
         return document.querySelector('.sumall').innerHTML
       })
-    expect(value).to.equal('600')
+    expect(value).to.equal('฿600.00')
   })
 })

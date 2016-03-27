@@ -53,14 +53,14 @@
               <div class="col s12 m10 l4">
                 <div class="card">
                   <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" ng-click="cart(sour.id,sour)" ng-src="{{sour.pic}}">
+                    <img class="activator" ng-click="cart(sour.id,sour)" ng-src="{{sour.pic}}" onclick="Materialize.toast('เพิ่มสินค้าเรียบร้อย',4000)">
                   </div>
                   <div class="card-content center">
                     <span class="card-title activator grey-text text-darken-3">
                       <h6>{{sour.name}}</h6>
                     </span>
                     <p>
-                      {{sour.price}}
+                      {{sour.price | currency:'฿' }}
                       บาท
                     </p>
                     <p>
@@ -114,22 +114,22 @@
                             <td></td>
                             <td>รวม
                               <a class="count">{{num}}</a>
-                              บาท</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>รวม
-                              <a class="sum">{{num*100}}</a>
                               เล่ม</td>
                           </tr>
                           <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>ลด
-                              <a class="discount">{{sell}}</a>
+                            <td>รวม
+                              <a class="sum">{{num*100 | currency:'฿' }}</a>
+                              บาท</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>ส่วนลด
+                              <a class="discount">{{sell | currency:'฿'}}</a>
                               บาท</td>
                           </tr>
                           <tr>
@@ -137,7 +137,7 @@
                             <td></td>
                             <td></td>
                             <td>รวมสุทธิ
-                              <a class="sumall">{{(num*100)-sell}}</a>
+                              <a class="sumall">{{(num*100)-sell  | currency:'฿'}}</a>
                               บาท</td>
                           </tr>
                         </tbody>
