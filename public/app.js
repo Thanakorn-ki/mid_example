@@ -88,7 +88,18 @@ angular.module('midone', [])
         }
       }
     }
-
+    $scope.plus = function (index) {
+      $scope.cartdata[index].quantity += 1
+      $scope.recal()
+    }
+    $scope.del = function (index) {
+      if ($scope.cartdata[index].quantity > 1) {
+        $scope.cartdata[index].quantity -= 1
+        $scope.recal()
+      } else if ($scope.cartdata[index].quantity === 0) {
+        return false
+      }
+    }
     $scope.callsell = function (amount) {
       $scope.sell = 0
       var countlist = 0 // เช็ครอบเข้า เงื่อนไขลดราคา

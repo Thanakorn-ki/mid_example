@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/jquery-2.1.1.min.js"> </script>
+    <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
 
     <meta name="theme-color" content="#2196F3">
@@ -49,7 +49,7 @@
           <h2 class="header text_b">Books
           </h2>
           <div class="row">
-            <div ng-repeat="sour in data" >
+            <div ng-repeat="sour in data">
               <div class="col s12 m10 l4">
                 <div class="card">
                   <div class="card-image waves-effect waves-block waves-light">
@@ -86,19 +86,19 @@
                           <tr>
                             <th data-field="id">เรื่อง</th>
                             <th data-field="name">จำนวน</th>
+                            <th></th>
+                            <th></th>
                             <th data-field="price">ราคา</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr ng-repeat="data in cartdata">
                             <td>{{data.name}}</td>
-                            <td>
-                              <input type="number" size="2" ng-change="recal()" min="1" ng-model="data.quantity">
-                            </td>
+                            <td>{{data.quantity}}</td>
+                              <td><a href=""><i class="material-icons" ng-click="plus($index)">expand_less</i></a></td>
+                            <td><a href=""><i class="material-icons" ng-click="del($index)">expand_more</i></a></td>
                             <td>{{data.quantity*data.price}}</td>
-                            <td>
-                              <button class="waves-effect waves-light btn" ng-click="delete($index)">ลบสินค้า</button>
-                            </td>
+                            <td><a href="#"><i class="material-icons" ng-click="delete($index)">delete_forever</i></a></td>
                           </tr>
                           <thead>
                             <tr>
@@ -113,15 +113,15 @@
                             <td></td>
                             <td></td>
                             <td>รวม
-                            <a class="count">{{num}}</a>
-                               บาท</td>
+                              <a class="count">{{num}}</a>
+                              บาท</td>
                           </tr>
                           <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>รวม
-                            <a class="sum">{{num*100}}</a>
+                              <a class="sum">{{num*100}}</a>
                               เล่ม</td>
                           </tr>
                           <tr>
@@ -129,7 +129,7 @@
                             <td></td>
                             <td></td>
                             <td>ลด
-                            <a class="discount">{{sell}}</a>
+                              <a class="discount">{{sell}}</a>
                               บาท</td>
                           </tr>
                           <tr>
@@ -137,7 +137,7 @@
                             <td></td>
                             <td></td>
                             <td>รวมสุทธิ
-                            <a class="sumall">{{(num*100)-sell}}</a>
+                              <a class="sumall">{{(num*100)-sell}}</a>
                               บาท</td>
                           </tr>
                         </tbody>
@@ -213,7 +213,7 @@
 
 </html>
 <script type="text/javascript">
-  $(document).ready(function(){
+  $(document).ready(function() {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
   });
